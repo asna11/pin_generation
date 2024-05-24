@@ -28,7 +28,7 @@ export class ListItemComponent implements OnInit {
 
     // const profile = this.pinArray[0].image;
     // console.log(profile);
-    this.pinArray.forEach((itm: any) => {
+    this.pinArray?.forEach((itm: any) => {
       const profile = itm.image;
       this.convertImageToBase64(profile);
 

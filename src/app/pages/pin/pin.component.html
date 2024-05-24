@@ -13,7 +13,7 @@
   <input type='file' #bannerImange formControlName="image" (change)="fileUpload($event)" />
 </div>
   <div class="form-group form-elem">
-    <ngx-select formControlName="collaboratory" (selectionChanges)="selectCollaboratory($event)" [ngClass]="(pinForm.get('collaboratory').hasError('required') && (pinForm.get('collaboratory').dirty || pinForm.get('collaboratory').touched))?'is-invalid':''" [placeholder]="selectCollab" [items]="collabs" [(ngModel)]="collabId" aria-required=""></ngx-select>
+    <ngx-select [multiple]="true" formControlName="collaboratory" (selectionChanges)="selectCollaboratory($event)" [ngClass]="(pinForm.get('collaboratory').hasError('required') && (pinForm.get('collaboratory').dirty || pinForm.get('collaboratory').touched))?'is-invalid':''" [placeholder]="selectCollab" [items]="collabs" [(ngModel)]="collabId" aria-required=""></ngx-select>
     <div
       *ngIf="pinForm.get('collaboratory').hasError('required') && (pinForm.get('collaboratory').dirty || pinForm.get('collaboratory').touched)"
       class="invalid-feedback">

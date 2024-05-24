@@ -1,0 +1,25 @@
+<form [formGroup]="customerForm" (ngSubmit)="onAddCustomer()">
+        <div class="form-group form-elem">
+           <input type="text" formControlName="name" class="form-control" [ngClass]="(customerForm.get('name').hasError('required') && (customerForm.get('name').dirty || customerForm.get('name').touched))?'is-invalid':''" placeholder="Name" required>
+           <div *ngIf="customerForm.get('name').hasError('required') && (customerForm.get('name').dirty || customerForm.get('name').touched)" class="invalid-feedback">
+            Name is required.
+          </div>
+          </div>
+          <div class="form-group form-elem">
+             <input formControlName="email" type="email" class="form-control" [ngClass]="(customerForm.get('email').hasError('required') && (customerForm.get('email').dirty || customerForm.get('email').touched))?'is-invalid':''" placeholder="Email" required>
+             <div *ngIf="customerForm.get('email').hasError('required') && (customerForm.get('email').dirty || customerForm.get('email').touched)" class="invalid-feedback">
+              Email is required.
+            </div>            
+          </div>
+
+        <div class="form-group form-elem">
+            <ngx-select formControlName="region" (selectionChanges)="selectRegion($event)" [ngClass]="(customerForm.get('region').hasError('required') && (customerForm.get('region').dirty || customerForm.get('region').touched))?'is-invalid':''" [placeholder]="selectPlaceholder" [items]="items" [(ngModel)]="itemId" aria-required=""></ngx-select>
+            <div *ngIf="customerForm.get('region').hasError('required') && (customerForm.get('region').dirty || customerForm.get('region').touched)" class="invalid-feedback">
+              Region is required.
+            </div>
+          </div>
+          <div class="form-group form-elem">
+            <ngx-select formControlName="country" [placeholder]="CountryPlaceholder" [items]="filteredCountry"></ngx-select>
+          </div>
+    <button style="margin-top: 8px;" [disabled]="customerForm.invalid" type="submit" class="btn btn-primary">Submit</button>
+  </form>
